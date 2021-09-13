@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZHCM_ESS_WNFE_SRV" xml:lang="pl" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="RequestLink" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="LVL"/>
+                    <PropertyRef Name="REQUEST_STATUS"/>
+                    <PropertyRef Name="INDEX"/>
+                    <PropertyRef Name="WF_ID"/>
+                    <PropertyRef Name="INDEX_V2"/>
+                </Key>
+                <Property Name="LVL" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Poziom w procesie WF" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REQUEST_STATUS" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Status w dashboard" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="INDEX" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Indeks WF" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WF_ID" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Nr ref." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="INDEX_V2" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Index WF" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="URL" Type="Edm.String" MaxLength="512" sap:unicode="false" sap:label="URL" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Attributes" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="STATUS"/>
+                </Key>
+                <Property Name="STATUS" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Status w dashboard" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="UNAME" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Nazwa użytkownika" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PERNR" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Numer osob." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MULTI_BTN_VISIBLE" Type="Edm.Boolean" sap:unicode="false" sap:label="Zmienna logiczna (X=prawda, -=fałsz, spacja=nieznane)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="RequestStatusDomainValues" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="REQUEST_STATUS_TXT"/>
+                </Key>
+                <Property Name="REQUEST_STATUS" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Status w dashboard" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="REQUEST_STATUS_TXT" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Krótki opis" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="fixed-values"/>
+            </EntityType>
+            <EntityType Name="RequestIdDomainValues" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PROCESS_ID"/>
+                </Key>
+                <Property Name="PROCESS_ID" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ID procesu work flow" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="fixed-values"/>
+                <Property Name="PROCESS_ID_TXT" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Krótki opis" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="fixed-values"/>
+            </EntityType>
+            <EntityType Name="DashboardHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Zdarzenie" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ACTION" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Wskaźnik jednoznakowy" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="DashboardListSet" Relationship="ZHCM_ESS_WNFE_SRV.HeaderToDashboardList" FromRole="FromRole_HeaderToDashboardList" ToRole="ToRole_HeaderToDashboardList"/>
+            </EntityType>
+            
+            <EntityType Name="DashboardList" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                    <PropertyRef Name="REQUEST_TYPE"/>
+                    <PropertyRef Name="WF_ID"/>
+                    <PropertyRef Name="REQUEST_STATUS"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Zdarzenie" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REQUEST_TYPE" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Rodzaj wniosku" sap:creatable="false" sap:updatable="false" sap:sortable="true" sap:filterable="true"/>
+                <Property Name="WF_ID" Type="Edm.String" Nullable="false" MaxLength="25" sap:unicode="false" sap:label="Nr ref." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="true"/>
+                <Property Name="REQUEST_TYPE_TXT" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Rodzaj wniosku - nazwa" sap:creatable="false" sap:updatable="false" sap:sortable="true" sap:filterable="true"/>
+                <Property Name="REQUEST_DATE" Type="Edm.DateTime" Nullable="true" Precision="7" sap:unicode="false" sap:label="Data zł. wniosku" sap:creatable="false" sap:updatable="false" sap:sortable="true" sap:filterable="true" sap:filter-restriction="interval"/>
+                <Property Name="REQUESTER_NAME" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Nazw. i imię" sap:creatable="false" sap:updatable="false" sap:sortable="true" sap:filterable="true" />
+                <Property Name="REQUESTER_PERNR" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Nr os. wnioskodawcy" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="true" />/>
+                <Property Name="REQUESTER_WERKS" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Obszar kadrowy" sap:creatable="false" sap:updatable="false" sap:sortable="true" sap:filterable="true"/>
+                <Property Name="REQUESTER_WERKS_TXT" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Obszar kadrowy - nazwa" sap:creatable="false" sap:updatable="false" sap:sortable="true" sap:filterable="true"/>
+                <Property Name="REQUESTER_ORGEH" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Jednostka organizacyjna" sap:creatable="false" sap:updatable="false" sap:sortable="true" sap:filterable="true" />
+                <Property Name="REQUESTER_ACT" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Os. przetw. wniosek" sap:creatable="false" sap:updatable="false" sap:sortable="true" sap:filterable="true"/>
+                <Property Name="REQUEST_STATUS" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Status w dashboard" sap:creatable="false" sap:updatable="false" sap:sortable="true" sap:filterable="true"/>
+                <Property Name="REQUEST_STATUS_TXT" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="true" sap:filterable="true"/>
+                <Property Name="ADD_INFO" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="ADD_INFO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="LAST_DATE" Type="Edm.DateTime" Nullable="true" Precision="7" sap:unicode="false" sap:label="Data" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="true" sap:filter-restriction="interval"/>
+                <Property Name="TEXT_STYLE" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Styl tekstu" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OWNER_NAME" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Nazwisko właściciela procesu" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="EXP_DATE" Type="Edm.DateTime" Nullable="true" Precision="7"  sap:unicode="false" sap:label="Data zakończenia umowy" sap:creatable="false" sap:updatable="false" sap:sortable="true" sap:filterable="true" sap:filter-restriction="interval"/>
+                <Property Name="COLOR" Type="Edm.Byte" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Web Dynpro: TableCellDesign" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MESSAGE" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Tekst" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="LVL" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Poziom w procesie WF" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="INDEX" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Indeks WF" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="INDEX_V2" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Index WF" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SHOWV" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Pokaż szczegóły" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" />
+                <Property Name="COPYV" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Kopiuj" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PRINTV" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Drukuj" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NEWV" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Parametr NEW" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="URLSHOW" Type="Edm.String" MaxLength="512" sap:unicode="false" sap:label="URLShow" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/> 
+                <Property Name="URLCOPY" Type="Edm.String" MaxLength="512" sap:unicode="false" sap:label="URLCopy" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="URLPRINT" Type="Edm.String" MaxLength="512" sap:unicode="false" sap:label="URLPrint" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ObszaryKadrowe" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PERSA"/>
+                </Key>
+                <Property Name="PERSA" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ID procesu work flow" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="fixed-values"/>
+                <Property Name="NAME1" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Krótki opis" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:value-list="fixed-values"/>
+            </EntityType>
+            <Association Name="HeaderToDashboardList" sap:content-version="1">
+                <End Type="ZHCM_ESS_WNFE_SRV.DashboardHeader" Multiplicity="1" Role="FromRole_HeaderToDashboardList"/>
+                <End Type="ZHCM_ESS_WNFE_SRV.DashboardList" Multiplicity="*" Role="ToRole_HeaderToDashboardList"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_HeaderToDashboardList">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_HeaderToDashboardList">
+                        <PropertyRef Name="ID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZHCM_ESS_WNFE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx" sap:searchable="true">
+                <EntitySet Name="RequestLinkSet" EntityType="ZHCM_ESS_WNFE_SRV.RequestLink" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AttributesSet" EntityType="ZHCM_ESS_WNFE_SRV.Attributes" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="RequestStatusDomainValuesSet" EntityType="ZHCM_ESS_WNFE_SRV.RequestStatusDomainValues" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" sap:semantics="fixed-values"/>
+                <EntitySet Name="RequestIdDomainValuesSet" EntityType="ZHCM_ESS_WNFE_SRV.RequestIdDomainValues" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"  sap:semantics="fixed-values"/>
+                <EntitySet Name="DashboardHeaderSet" EntityType="ZHCM_ESS_WNFE_SRV.DashboardHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="DashboardListSet" EntityType="ZHCM_ESS_WNFE_SRV.DashboardList" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1" />
+                <EntitySet Name="ObszaryKadroweSet" EntityType="ZHCM_ESS_WNFE_SRV.ObszaryKadrowe" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"  sap:semantics="fixed-values"/>
+                <AssociationSet Name="HeaderToDashboardListSet" Association="ZHCM_ESS_WNFE_SRV.HeaderToDashboardList" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="DashboardHeaderSet" Role="FromRole_HeaderToDashboardList"/>
+                    <End EntitySet="DashboardListSet" Role="ToRole_HeaderToDashboardList"/>
+                </AssociationSet>
+            </EntityContainer>
+           <atom:link rel="self" href="http://s-hfdapp-za01.psg.psgaz.pl:8051/sap/opu/odata/sap/ZHCM_ESS_WNFE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+           <atom:link rel="latest-version" href="http://s-hfdapp-za01.psg.psgaz.pl:8051/sap/opu/odata/sap/ZHCM_ESS_WNFE_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+          </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

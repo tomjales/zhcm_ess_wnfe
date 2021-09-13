@@ -1,0 +1,7 @@
+ID: zhcm_ess_wnfe_id
+_schema-version: 3.3.0
+version: 1.0.1
+modules:
+  - name: WebContent
+    type: application
+    path: ./webapp
