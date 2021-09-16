@@ -1,6 +1,6 @@
 sap.ui.controller("zhcmess.zhcmesswnfe.ext.controller.ListReportExt", {
 	onInit: function (oEvent) {
-		var oView = this.getView();
+        var oView = this.getView();
 		var a = 5;
 		//       var oOwnerComponent = this.getOwnerComponent();
 	},
@@ -188,5 +188,31 @@ sap.ui.controller("zhcmess.zhcmesswnfe.ext.controller.ListReportExt", {
 			});
 		}
 		that.oErrorMessageDialog.open();
+    },
+    formatLink: function(sLink) {
+            if (typeof sLink === "undefined") 
+               { return "NIE MA" }
+            var oView = this.getView();               
+            var oResourceBundle = oView.getModel("i18n").getResourceBundle();
+			var oText = oResourceBundle.getText("URL");
+			return oText
+    },
+    formatColumnWyswietl: function(sText) {
+            var oView = this.getView();               
+            var oResourceBundle = oView.getModel("i18n").getResourceBundle();
+			var oText = oResourceBundle.getText("Wyswietl"); 
+			return oText
+    },
+    formatColumnDrukuj: function(sText) {
+            var oView = this.getView();               
+            var oResourceBundle = oView.getModel("i18n").getResourceBundle();
+			var oText = oResourceBundle.getText("Drukuj"); 
+			return oText
+    },
+    formatColumnKopiuj: function(sText) {
+            var oView = this.getView();               
+            var oResourceBundle = oView.getModel("i18n").getResourceBundle();
+			var oText = oResourceBundle.getText("Kopiuj"); 
+			return oText
 	}
 });

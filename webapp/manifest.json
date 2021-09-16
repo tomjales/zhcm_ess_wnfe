@@ -112,7 +112,19 @@
         "extends": {
             "extensions": {
                 "sap.ui.viewExtensions": {
-                    "sap.suite.ui.generic.template.ListReport.view.ListReport": {}
+                    "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+                        "ResponsiveTableColumnsExtension|DashboardListSet": {
+                            "className": "sap.ui.core.Fragment",
+                            "fragmentName": "zhcmess.zhcmesswnfe.ext.fragments.ResponsiveTableColumns",
+                            "type": "XML"
+                        },
+                        "ResponsiveTableCellsExtension|DashboardListSet": {
+                            "className": "sap.ui.core.Fragment",
+                            "fragmentName": "zhcmess.zhcmesswnfe.ext.fragments.ResponsiveTableCells",
+                            "type": "XML"
+                        }
+                    },
+                    "sap.suite.ui.generic.template.ObjectPage.view.Details": {}
                 },
                 "sap.ui.controllerExtensions": {
                     "sap.suite.ui.generic.template.ListReport.view.ListReport": {

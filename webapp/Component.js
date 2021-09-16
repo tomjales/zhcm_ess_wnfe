@@ -2,6 +2,7 @@ sap.ui.define(['sap/suite/ui/generic/template/lib/AppComponent'], function(AppCo
     return AppComponent.extend("zhcmess.zhcmesswnfe.Component", {
         metadata: {
             manifest: "json"
-        }
+        },
+        
     });
 });

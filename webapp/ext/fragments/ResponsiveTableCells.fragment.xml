@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" 
+    xmlns="sap.m"
+    controllerName="zhcmess.zhcmesswnfe.ext.controller.ListReportExt">
+	<!--Column 1 Cell
+    Options are the standard values for window.open() supported by browsers: 
+    _self, _top, _blank, _parent, _search.     
+    <Link text=  "{ parts: ['{URLSHOW}'}, '{@i18n>URL}'], z 2 parametrami nie działa, obejdzie się --> 
+<!--	
+	<Link text= "Uruchom"       
+          target="_blank"
+		  href="{URLSHOW}" 
+          visible="{= ${URLSHOW} !== ''}"/>  
+		  
+		  <Text text="{URLSHOW}" />
+		  <Text text="{REQUEST_TYPE}" />   --> 
+		  
+ <!-- <Link text=  "{ path: '{URLSHOW}',  formatter: '.formatLink' }"              
+          target="_blank"
+		  href="{URLSHOW}" />
+		Column 2 Cell 
+     <Link text=  "{ path: '{URLPRINT}',  formatter: '.formatLink' }"              
+          target="_blank"
+		  href="{URLPRINT}" />
+		Column 3 Cell 
+		<Link text=  "{ path: '{URLCOPY}',  formatter: '.formatLink' }"              
+          target="_blank"
+		  href="{URLCOPY}" />   -->       
+</core:FragmentDefinition>

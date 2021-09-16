@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m"
+    controllerName="zhcmess.zhcmesswnfe.ext.controller.ListReportExt">
+    <!--Column 1 Header
+    <Column id="textColumn1"> 
+  
+        <Text text="{@i18n>URL}"/>  
+        <Text text="{ path: 'Wyswietl', formatter: '.formatColumnWyswietl' }"  />
+        <customData>
+            <core:CustomData key="p13nData" value="\{'columnKey': 'textColumn1', 'columnIndex': 10, 'leadingProperty': 'URLSHOW' }"/>
+        </customData>
+    </Column> -->
+   <!--  Column 2 Header
+   <Column id="textColumn2">
+         <Text text="{ path: 'Drukuj', formatter: '.formatColumnDrukuj' }"  />
+        <customData>
+            <core:CustomData key="p13nData" value="\{'columnKey': 'textColumn2', 'columnIndex': 11, 'leadingProperty': 'URLPRINT' }"/>
+        </customData>
+    </Column> -->
+    <!--Column 3 Header
+    <Column id="textColumn3">
+         <Text text="{ path: 'Kopiuj', formatter: '.formatColumnKopiuj' }"  />
+        <customData>
+            <core:CustomData key="p13nData" value="\{'columnKey': 'textColumn3', 'columnIndex': 12, 'leadingProperty': 'URLCOPY' }"/>
+        </customData>
+    </Column> -->
+</core:FragmentDefinition>
